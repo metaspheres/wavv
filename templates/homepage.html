@@ -9,20 +9,24 @@
 <body>
     {% include "header.html" %}
 
-    <main>
-        <section class="main-section">
-            <label for="folder-browser-input"></label>    
-            <form action="/load" method="post" class="form-submit">
-                <span>
-                <input id="folder-browser-input" type="text" name="path" placeholder="C:/Users">
-                </span>  
-                <span>
-                <input type="hidden" name="folder_path" id="selected-path">
-                <button type="submit" id="load-library"><img src="static/imgs/search.png"></button>
-                </span>
-            </form>
-            <div id="suggestions"></div>
+    <div class="main-container">
+        <div class="main-section">
+            <div class="path-container-grid">
+                <div class="path-container">
+                    <label for="folder-browser-input"></label>    
+                    <form action="/load" method="post" class="form-submit">
+                        <span>
+                        <input id="folder-browser-input" type="text" name="path" placeholder="C:/Users">
+                        </span>  
+                        <span>
+                        <input type="hidden" name="folder_path" id="selected-path">
+                        <button type="submit" id="load-library"><img src="static/imgs/search.png"></button>
+                        </span>
+                    </form>
+                    <div id="suggestions"></div>
 
+                </div>
+            </div>
 
         
         <div class="music-data-container">
@@ -47,10 +51,10 @@
             </tr>
                 {% endfor %}   
                 
-                </table>
-            </div>
-        </section>
-    </main>
+        </table>
+        </div>
+        </div>
+    </div>
     {% include "footer.html" %}
 <script src="static\js\main.js"></script>
 

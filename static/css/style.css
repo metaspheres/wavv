@@ -36,7 +36,8 @@ body {
 }
 
 
-main {
+.main-container{
+  max-width: 1300px;
   width: 100%;
   margin: 0 auto;
   padding-top: 2%;  
@@ -57,11 +58,16 @@ main {
 }
 
 .main-section{
-  display: flex;
+  display: grid;
   border:var(--accents-color);
 	grid-template-columns: 2fr 3fr;
   gap:10px;
+  justify-content: center;
   padding: 10px 5px 10px 0px ;
+
+  /* display: flex;
+  align-items: flex-start; */
+
 }
 
 
@@ -70,7 +76,7 @@ main {
         grid-template-columns: 1fr;
     }
 }
-/* 
+
 .path-container-grid {
   display: grid;
   grid-template-rows: 1fr; 
@@ -86,7 +92,7 @@ main {
     align-items: flex-start;
   
   }
-} */
+}
 
 
 .path-container{
