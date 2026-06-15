@@ -1,5 +1,7 @@
 from main import app
 from flask import render_template, request, redirect, url_for, jsonify, session
+from mutagen import File as MutagenFile
+from mutagen.id3 import ID3, TIT2, TPE1, TALB, TRCK, TDRC
 from models import *
 
 @app.route("/")
@@ -31,14 +33,25 @@ def save():
     tracknumber = request.form.get('track-number')
     date = request.form.get('date')
 
+    file = MutagenFile(path)
 
-    file = File(path)
+    if file.tags is None:
+        file.add_tags()
 
-    file['artist'] = [artist]
-    file['title'] = [title]
-    file['album'] = [album]
-    file['tracknumber'] = [tracknumber]
-    file['date'] = [date]
+    if hasattr(file, 'tags') and hasattr(file.tags, '__setitem__'):
+        # MP3 uses ID3 tags
+        if path.lower().endswith('.mp3'):
+            file.tags['TPE1'] = TPE1(encoding=3, text=[artist])
+            file.tags['TIT2'] = TIT2(encoding=3, text=[title])
+            file.tags['TALB'] = TALB(encoding=3, text=[album])
+            file.tags['TRCK'] = TRCK(encoding=3, text=[tracknumber])
+            file.tags['TDRC'] = TDRC(encoding=3, text=[date])
+        else:
+            file['artist'] = [artist]
+            file['title'] = [title]
+            file['album'] = [album]
+            file['tracknumber'] = [tracknumber]
+            file['date'] = [date]
 
     file.save()
 

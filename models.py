@@ -16,21 +16,41 @@ def scan_folder(folder_path):
 # ler metadados do ficheiro atraves da path inserida 
 def read_metadata(file_path):
     file = File(file_path)
-    #fallback p/data 
-    date = file.get('date')
+
+    def get_tag(key):
+        value = file.get(key)
+        if value is not None:
+            return value[0]
+        # verificar se ficheiro mp3 tem tags ID3 tags
+        if hasattr(file, 'tags') and hasattr(file.tags, 'get'):
+            id3_map = {
+                'artist': 'TPE1',
+                'title': 'TIT2',
+                'album': 'TALB',
+                'albumartist': 'TPE2',
+                'tracknumber': 'TRCK',
+                'date': 'TDRC',
+            }
+            id3_key = id3_map.get(key)
+            if id3_key:
+                value = file.tags.get(id3_key)
+                if value is not None:
+                    return str(value[0]) if not isinstance(value[0], str) else value[0]
+        return None
+
     try:
-        date = int((file.get('date') or ['1980'])[0][:4])
-    except ValueError:
+        date = int((get_tag('date') or '1980')[:4])
+    except (ValueError, TypeError):
         date = 1980
 
     file_metadata = {
-        "Artist":(file.get('artist') or ['Unknown'])[0],
-        "Album Artist:":(file.get('albumartist') or ['Unknown'])[0],
-        "Title":(file.get('title') or ['Unknown'])[0],
-        "Album":(file.get('album') or ['Unknown'])[0],
-        "Track Number":(file.get('tracknumber') or ['Unknown'])[0],
+        "Artist": get_tag('artist') or 'Unknown',
+        "Album Artist": get_tag('albumartist') or 'Unknown',
+        "Title": get_tag('title') or 'Unknown',
+        "Album": get_tag('album') or 'Unknown',
+        "Track Number": get_tag('tracknumber') or 'Unknown',
         "Date": date,
-        "Path": file_path
+        "Path": str(file_path)
         }
 
     return file_metadata
