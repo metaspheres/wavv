@@ -11,16 +11,18 @@
 
     <main>
         <section class="search folder-list">
-            <label for="folder-browser-input"></label>    
-            <form action="/load" method="post" class="form-submit">
-                <span>
-                    <input id="folder-browser-input" type="text" name="path" placeholder="C:/Users">
-                </span>  
-                <span>
-                    <input type="hidden" name="folder_path" id="selected-path">
-                    <button type="submit" id="load-library"><img src="static/imgs/search.png"></button>
-                </span>
-            </form>
+            <div class="search-bar">
+                <label for="folder-browser-input"></label>    
+                <form action="/load" method="post" class="form-submit">
+                    <span>
+                        <input id="folder-browser-input" type="text" name="path" placeholder="C:/Users">
+                    </span>  
+                    <span>
+                        <input type="hidden" name="folder_path" id="selected-path">
+                        <button type="submit" id="load-library"><img src="static/imgs/search.png"></button>
+                    </span>
+                </form>
+            </div>
             <div id="suggestions"></div>
         </section>
 

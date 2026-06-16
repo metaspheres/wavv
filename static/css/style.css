@@ -7,7 +7,7 @@
 
 :root {
   --body-text-color: #F6F0E9;
-  --accents-color: #EC4C56;
+  --accents-color: #b22424;
   --main-background-color: #1C222D;
   --no-highlight-color:#596172;
   --container-color: #242933;
@@ -16,6 +16,7 @@
 
 body {
   background-color: var(--main-background-color);
+  margin: 0 auto;
 }
 
 
@@ -33,7 +34,6 @@ body {
 
 
 .header{
-  max-width: 1300px;
   margin: 0 auto;
   padding-top: 2%;  
   color:var(--no-highlight-color);
@@ -45,9 +45,8 @@ body {
 
 
 main {
-  display: flex;
   margin: 0 auto;
-  justify-content: space-evenly;
+  display: flex;
   padding-top: 2%;  
   color: var(--font-color);
   border:var(--accents-color);
@@ -55,28 +54,18 @@ main {
 
 }
 
-/* 
-@media screen and (max-width: 768px) {
-    .main-section {
-        grid-template-columns: 1fr;
-    }
-} */
-
-/* 
-.path-container{
-  width: 100%;
-  margin: 0 auto;
-  padding: 0px 5px 10px 0px ;
-} */
-
-.music-data-container th{
-  background-color: var(--container-color);
-  color: var(--no-highlight-color);
-
+.search {
+  display: flex;
+  flex-direction: column;
 }
 
-.music-data-container{
 
+.search-bar {
+  display: flex;
+}
+.music-data-container{
+  display: flex;
+  width: 100%;
 	font-family: "Rubik", sans-serif;
 	font-optical-sizing: auto;
 	font-weight: 400;
@@ -89,9 +78,15 @@ main {
 
 table {
   border-collapse: collapse;
-
+  width: 100%;
 }
 
+
+.music-data-container th{
+  background-color: var(--container-color);
+  color: var(--no-highlight-color);
+
+}
 
 td, th {
   text-align: left;
@@ -123,6 +118,7 @@ td img{
 }
 
 #folder-browser-input{
+  width: 100%;
   font-size:16px;
   font-family: "Rubik", sans-serif;
   height:inherit;
@@ -188,7 +184,7 @@ input::placeholder {
 .footer span{
   color:var(--no-highlight-color);
   font-family: "Rubik", sans-serif;
-  font-size: 14px; /* for compability */
+  font-size: 14px; 
 	font-optical-sizing: auto;
 	font-weight: 400;
 
@@ -204,4 +200,11 @@ input::placeholder {
   color: var(--accents-color);
   text-decoration:none; 
   cursor:pointer;  
+}
+
+
+@media (max-width: 768px) {
+main {
+    flex-direction: column;
+  }
 }
