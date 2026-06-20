@@ -13,6 +13,9 @@
   --container-color: #242933;
 }
 
+* {
+  box-sizing: border-box;
+}
 
 body {
   background-color: var(--main-bg-color);
@@ -31,50 +34,55 @@ body {
 }
 
 
+/* .header-container{
 
+} */
 
 header{
   display: flex;
   flex-direction: row;
-  padding-top: 2%;  
+  justify-content: flex-start;
+  gap: 10px;
+  /* padding-top: 2%;  
   color:var(--light-bg-color);
   font-family: "Rubik", sans-serif;
-  font-size: 14px; /* for compability */
+  font-size: 14px; 
 	font-optical-sizing: auto;
 	font-weight: 400;
-  gap:10px;
+  gap:10px; */
 }
 
 .search{
-    display: flex;
-  width: 100%;
-  flex-direction: row;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: red;
 }
 .search-bar{
   display: flex;
-  width: 100%;
-  flex-direction: column;
-  width: 100%;
+  flex-direction: row;
+  flex: 1;
+  min-width: 0;
+  background-color: greenyellow;
+  /* width: 100%;
   align-content: center;
-  align-items: center;
+  align-items: center; */
 }
 
 
 
 .form-submit{
-  display: flex;
-  align-items: center;
-  gap:8px;
+  width: 100%;
 
 }
 
-.form-submit {
+/* .form-submit {
   display: flex;
   flex-direction: column;
-}
+} */
 
 #folder-browser-input{
-  width: 100%;
+  flex:1;
   font-size:16px;
   font-family: "Rubik", sans-serif;
   height:inherit;
@@ -82,6 +90,12 @@ header{
   border: none;
   background-color: var(--light-bg-color);
 
+}
+
+.header-under-text{
+  color:var(--light-bg-color);
+  font-family: "Rubik", sans-serif;
+  font-size: 14px; 
 }
 
 
