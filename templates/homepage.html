@@ -12,33 +12,36 @@
     <header>
         {% include "header.html" %}
     </header>
+
+
     <main class="main-container">
+    <section id="mySidenav" class="search-data parent-container push-sidenav">
+        <!-- <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> -->
+        <section class="text-container">
+            <h2>Search folder</h2>
+        </section>
 
-        <section class="search-data parent-container">
-            <section class="text-container">
-                <h2>Search folder</h2>
-            </section>
-
-            <section class="search folder-list">
-                <section class="search-bar-container">
-                    <section class="text-input-class">
-                        <label for="folder-browser-input"></label>
-                        <form action="/load" method="post" class="form-submit">
-                            <input id="folder-browser-input" type="text" name="path" placeholder="C:/Users">
-                    </section>
-                    <section class="load-library-class">
-                        <input type="hidden" name="folder_path" id="selected-path">
-                        <button type="submit" id="load-library"><img src="static/imgs/search-yellow.png"></button>
-                        </form>
-                    </section>
-
+        <section class="search folder-list">
+            <section class="search-bar-container">
+                <section class="text-input-class">
+                    <label for="folder-browser-input"></label>
+                    <form action="/load" method="post" class="form-submit">
+                        <input id="folder-browser-input" type="text" name="path" placeholder="C:/Users">
+                </section>
+                <section class="load-library-class">
+                    <input type="hidden" name="folder_path" id="selected-path">
+                    <button type="submit" id="load-library"><img src="static/imgs/search-yellow.png"></button>
+                    </form>
                 </section>
 
             </section>
-            
-            <div id="suggestions"></div>
+
         </section>
-        <section class="batch-edit parent-container">
+
+        <div id="suggestions"></div>
+    </section>
+    <button id="push-btn" onclick="openNav()"><img src="../static/imgs/search-black.png"></button>
+        <section id="main" class="batch-edit parent-container main-push">
             <section class="sidebar text-container">
                 <h2 class="bar-item">Batch Edit</h5>
                     <button class="bar-item tab-button tablink" onclick="openEditor(event, 'Artists')">Artists</button>
@@ -59,10 +62,10 @@
                 {% endfor %}
             </section>
         </section>
-        <section class="song-edit parent-container">
+        <section class="main-push song-edit parent-container">
             <section class="data-table-container">
                 <!-- maybe make 2 classes, one for all containers, other section specific -->
-                <section class="sticky-subtitle text-container">
+                <section class="text-container">
                     <h2>Album details</h2>
                 </section>
                 <section class="album-info-container">

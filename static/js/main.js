@@ -1,27 +1,31 @@
 document.getElementById("folder-browser-input").addEventListener("input", getPath)
+let navOpen = false;
+let sideNav = document.getElementById("mySidenav")
+let mainPush = document.querySelectorAll("main-push")
+//fetch folder paths
 
-function getPath(event){
+function getPath(event) {
     const path = event.target.value
     fetch('/browse?path=' + path)
-    .then(response => response.json())
-    .then(data => {
+        .then(response => response.json())
+        .then(data => {
 
-        const suggestions = document.getElementById("suggestions")
-        suggestions.innerHTML = ""
-        data.forEach(path =>{
-            console.log("Creating item for:", path)
-            const item = document.createElement("div")
-            item.textContent = path
-            item.addEventListener("click", () => {
-                document.getElementById("folder-browser-input").value = path
-                document.getElementById("selected-path").value = path       
-                getPath()
+            const suggestions = document.getElementById("suggestions")
+            suggestions.innerHTML = ""
+            data.forEach(path => {
+                console.log("Creating item for:", path)
+                const item = document.createElement("div")
+                item.textContent = path
+                item.addEventListener("click", () => {
+                    document.getElementById("folder-browser-input").value = path
+                    document.getElementById("selected-path").value = path
+                    getPath()
 
+                })
+                suggestions.appendChild(item)
             })
-            suggestions.appendChild(item)
-        })
 
-    })
+        })
 }
 
 document.querySelector("form").addEventListener("submit", () => {
@@ -31,6 +35,8 @@ document.querySelector("form").addEventListener("submit", () => {
         hiddenInput.value = typedPath
     }
 })
+
+//modals
 
 function openAlbumModal(albumName) {
     const modal = document.getElementById('album-modal');
@@ -65,10 +71,25 @@ function saveAlbumEdit() {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: 'old_album=' + encodeURIComponent(oldName) + '&new_album=' + encodeURIComponent(newName)
     })
-    .then(response => {
-        if (response.ok) {
-            window.location.reload();  
-        }
-    });
+        .then(response => {
+            if (response.ok) {
+                window.location.reload();
+            }
+        });
 }
-                  
+
+// sidebar w/push
+
+
+function openNav() {
+    if (navOpen === false) {
+        navOpen = true
+        document.getElementById("mySidenav").style.width = "450px";
+    } else{
+        navOpen = false
+        document.getElementById("mySidenav").style.width = "0";
+        document.querySelectorAll("main-push").style.marginLeft = "0";
+    }
+
+}
+
