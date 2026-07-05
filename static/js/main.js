@@ -93,3 +93,12 @@ function openNav() {
 
 }
 
+function openEditor(selectionName) {
+  var i;
+  var x = document.getElementsByClassName("editable-content");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+    console.log("wat")
+  }
+  document.getElementById(selectionName).style.display = "block";
+}

@@ -14,6 +14,7 @@
   --main-bg-color:#080b0f;
   --light-bg-color:#242525;
   --container-color: #242933;
+  --light-component-color: #555;
   }
 
 ::-webkit-scrollbar {
@@ -22,10 +23,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--accents-color);
+  background:  #555; 
+  cursor: pointer;
+
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+  background: var(--accents-color)
 }
 
 * {
@@ -36,12 +39,10 @@ body {
   background-color: var(--main-bg-color);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   margin-top: 2em;
-  margin-right: 2em;
-  margin-bottom: 2em;
   margin-left: 2em;
+  margin-right: 2em;
+  align-items: normal;
 }
 
 /* -------------------
@@ -84,7 +85,6 @@ header img{
 }
 
 header, .main-container {
-  width: 100%;
   min-width: 600px;
 }
 
@@ -105,6 +105,8 @@ header, .main-container {
   padding-top: 2%;  
   color: var(--font-color);
   border:var(--accents-color);
+  min-height: 75vh;
+  gap: 10px;
 }
 
 
@@ -119,7 +121,6 @@ header, .main-container {
 
 .parent-container{
   background-color: var(--light-bg-color);
-  margin-left: 10px;
   border-radius: 10px;
   display: flex;
   flex-direction: row;
@@ -153,9 +154,17 @@ SEARCH FOLDER SECTION
   justify-content: center;
   max-width: 40px;
   height: auto;
-  background-color: var(--accents-color);
+  background-color: var(--light-bg-color);
   padding: 5px;
+  cursor: pointer;
+  border-radius: 5px;
 }
+
+#push-btn:hover {
+  background: var(--accents-color);
+}
+
+
 #push-btn img{
   image-rendering: smooth;
   max-width: 30px;
@@ -165,8 +174,7 @@ SEARCH FOLDER SECTION
 .search-data{
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  /* flex: 1; */
+  align-items: stretch;
 }
 
 .search-bar-container{
@@ -178,16 +186,17 @@ SEARCH FOLDER SECTION
 .form-submit {
   display: flex;
   flex-direction: row;
+  align-items: stretch;
 }
 
 #folder-browser-input{
-  flex:1;
   font-size:14px;
   font-family: "Rubik", sans-serif;
   height:inherit;
   padding: 5px 10px;
   height: 35px;
   border: none;
+  width: 100%;
   border-radius: 15px 0px 0px 15px;
   background-color: var(--main-bg-color);
 
@@ -220,7 +229,6 @@ SEARCH FOLDER SECTION
 .suggestions-container{
 
   background-color: #242525;
-  flex: 1;
   border-radius: 10px;
   padding: 14px;
 
@@ -253,11 +261,11 @@ BATCH EDIT SECTION
 ------------------- */
 .batch-edit{
   padding-left: 0px;
+  flex: 1;
 }
 .sidebar{
   display: flex;
   flex-direction: column;
-  flex: 1;
   color: var(--accents-color);
   margin: 0px;
   padding: 0px;
@@ -292,13 +300,13 @@ BATCH EDIT SECTION
 .sidebar h2{
   padding-left: 14px;
 }
-.albums-detected{
+#albums-detected{
   background-color: var(--light-bg-color);
   margin-left: 10px;
   border-radius: 10px;
   display: flex;
+  flex: 1;
   flex-direction: column;
-  flex: 3;
   font-family: "Rubik", sans-serif;
   font-size: 14px; 
   padding: 0px 14px 14px 14px;
@@ -312,9 +320,11 @@ SONG TABLE DATA
 -------------------- */
 
 .song-edit{
+  
   display: flex;
   flex-direction: column;
   margin-left: 10px;
+  flex: 1;
 	font-family: "Rubik", sans-serif;
 	font-optical-sizing: auto;
 	font-weight: 400;
@@ -328,8 +338,6 @@ SONG TABLE DATA
 }
 .data-table-container{
  overflow: scroll; 
-  flex: flex 1;
-
 
 }
 table {
@@ -350,11 +358,11 @@ td, th {
 
 }
 
-td img{
+.edit-btn{
   width: 20px;
   height: auto;
   object-fit: contain;
-  color: white;
+  cursor: pointer;
 }
 
 

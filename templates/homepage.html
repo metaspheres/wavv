@@ -16,7 +16,6 @@
 
     <main class="main-container">
     <section id="mySidenav" class="search-data parent-container push-sidenav">
-        <!-- <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> -->
         <section class="text-container">
             <h2>Search folder</h2>
         </section>
@@ -44,11 +43,16 @@
         <section id="main" class="batch-edit parent-container main-push">
             <section class="sidebar text-container">
                 <h2 class="bar-item">Batch Edit</h5>
-                    <button class="bar-item tab-button tablink" onclick="openEditor(event, 'Artists')">Artists</button>
-                    <button class="bar-item tab-button tablink" onclick="openEditor(event, 'Albums')">Albums</button>
+                    <button class="bar-item tab-button tablink" onclick="openEditor('artists-detected')">Artists</button>
+                    <button class="bar-item tab-button tablink" onclick="openEditor('albums-detected')">Albums</button>
             </section>
 
-            <section class="albums-detected">
+            <section id="artists-detected" class="artists-detected editable-content">
+
+
+            </section>
+
+            <section id="albums-detected" class="editable-content" style="display: none">
                 <section class="text-container">
                     <h2>Albums found</h2>
 
@@ -57,7 +61,7 @@
                 <div class="album-card" data-album="{{ album_name }}">
                     <span class="album-name">{{ album_name }}</span>
                     <span class="album-count">{{ songs|length }}</span>
-                    <button class="edit-album-btn" onclick="openAlbumModal('{{ album_name }}')">Edit</button>
+                    <img src="./../static/imgs/edit.png" class="edit-btn" onclick="openAlbumModal('{{ album_name }}')">
                 </div>
                 {% endfor %}
             </section>
@@ -93,7 +97,7 @@
                         <td>{{ song['Track Number'] }}</td>
                         <td>{{ song['Date'] }}</td>
 
-                        <td><a href="/edit?path={{ song['Path'] }}"> <img src="static\imgs\edit.png" alt="Edit"></a>
+                        <td><a href="/edit?path={{ song['Path'] }}"> <img class="edit-btn" src="static\imgs\edit.png" alt="Edit"></a>
                         </td>
                     </tr>
                     {% endfor %}
