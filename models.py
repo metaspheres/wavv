@@ -8,11 +8,12 @@ def scan_folder(folder_path):
     path = Path(folder_path)
     file_list = []
 
-    for file_name in path.rglob('*'):
-        if file_name.is_file() and file_name.suffix in (".mp3",".flac",".m4a",".wav",".ogg"):
+    for file_name in path.rglob('*'): 
+        if file_name.is_file() and file_name.suffix in (".mp3", ".flac", ".m4a", ".wav", ".ogg"):
             file_list.append(file_name)
 
     return file_list
+
 
 # reads all files metadata through inserted path
 def read_metadata(file_path):
@@ -75,6 +76,19 @@ def group_by_album(library):
 
     return album_dict
 
+
+def group_by_artist(library):
+    artist_list = []
+
+    for artist in library:
+        artist_name = artist["Artist"]
+
+        if artist_name not in artist_list:
+            artist_list.append(artist_name)
+
+    return artist_list
+    
+
 # scans folder and shows files and subfolders
 def get_library(folder_path):
 
@@ -85,6 +99,7 @@ def get_library(folder_path):
     
     return file_list
 
+
 # show only subfolders (subdir) -> para escolher caminho na main a ser utilizado
 def get_directory(directory):
     selected_directory = Path(directory)
@@ -92,7 +107,7 @@ def get_directory(directory):
 
     for subdir in selected_directory.iterdir():
         if subdir.is_dir():
-            subdir_list.append(str(subdir)) # converts to string
+            subdir_list.append(str(subdir))  # converts to string
 
     return subdir_list
 

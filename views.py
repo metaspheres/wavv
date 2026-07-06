@@ -10,11 +10,12 @@ def homepage():
     folder_path = session.get('folder_path')
 
     if not folder_path:
-        return render_template("homepage.html", data=[], albums={})
+        return render_template("homepage.html", data=[], albums={}, artists=[])
 
     library = get_library(folder_path)
     albums = group_by_album(library)
-    return render_template("homepage.html", data=library, albums=albums)
+    artists = group_by_artist(library)
+    return render_template("homepage.html", data=library, albums=albums, artists=artists)
 
 @app.route("/edit", methods=["GET", "POST"])
 

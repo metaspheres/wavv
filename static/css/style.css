@@ -315,6 +315,20 @@ BATCH EDIT SECTION
 
 }
 
+#artists-detected{
+  background-color: var(--light-bg-color);
+  margin-left: 10px;
+  border-radius: 10px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  font-family: "Rubik", sans-serif;
+  font-size: 14px; 
+  padding: 0px 14px 14px 14px;
+  color: var(--body-text-color);
+  overflow: scroll; 
+}
+
 /* -----------------
 SONG TABLE DATA
 -------------------- */
@@ -380,6 +394,20 @@ input::placeholder {
   padding: 5px;
 }
 
+
+.artist-card{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+  padding: 5px;
+}
+
+.artist-name{
+  font-size: 14px;
+  flex:4;
+}
 .album-name{
   font-size: 14px;
   flex:4;
@@ -398,6 +426,7 @@ input::placeholder {
   cursor: pointer;
 
 }
+
 
 /* ----------------
       MODALS

@@ -15,41 +15,49 @@
 
 
     <main class="main-container">
-    <section id="mySidenav" class="search-data parent-container push-sidenav">
-        <section class="text-container">
-            <h2>Search folder</h2>
-        </section>
+        <section id="mySidenav" class="search-data parent-container push-sidenav">
+            <section class="text-container">
+                <h2>Search folder</h2>
+            </section>
 
-        <section class="search folder-list">
-            <section class="search-bar-container">
-                <section class="text-input-class">
-                    <label for="folder-browser-input"></label>
-                    <form action="/load" method="post" class="form-submit">
-                        <input id="folder-browser-input" type="text" name="path" placeholder="C:/Users">
-                </section>
-                <section class="load-library-class">
-                    <input type="hidden" name="folder_path" id="selected-path">
-                    <button type="submit" id="load-library"><img src="static/imgs/search-yellow.png"></button>
-                    </form>
+            <section class="search folder-list">
+                <section class="search-bar-container">
+                    <section class="text-input-class">
+                        <label for="folder-browser-input"></label>
+                        <form action="/load" method="post" class="form-submit">
+                            <input id="folder-browser-input" type="text" name="path" placeholder="C:/Users">
+                    </section>
+                    <section class="load-library-class">
+                        <input type="hidden" name="folder_path" id="selected-path">
+                        <button type="submit" id="load-library"><img src="static/imgs/search-yellow.png"></button>
+                        </form>
+                    </section>
+
                 </section>
 
             </section>
 
+            <div id="suggestions"></div>
         </section>
-
-        <div id="suggestions"></div>
-    </section>
-    <button id="push-btn" onclick="openNav()"><img src="../static/imgs/search-black.png"></button>
+        <button id="push-btn" onclick="openNav()"><img src="../static/imgs/search-black.png"></button>
         <section id="main" class="batch-edit parent-container main-push">
             <section class="sidebar text-container">
                 <h2 class="bar-item">Batch Edit</h5>
-                    <button class="bar-item tab-button tablink" onclick="openEditor('artists-detected')">Artists</button>
+                    <button class="bar-item tab-button tablink"
+                        onclick="openEditor('artists-detected')">Artists</button>
                     <button class="bar-item tab-button tablink" onclick="openEditor('albums-detected')">Albums</button>
             </section>
 
-            <section id="artists-detected" class="artists-detected editable-content">
-
-
+            <section id="artists-detected" class="editable-content">
+                <section class="text-container">
+                    <h2>Artists Found</h2>
+                </section>
+                {% for artist in artists %}
+                <div class="artist-card">
+                    <span class="artist-name">{{ artist }}</span>
+                    <img src="./../static/imgs/edit.png" class="edit-btn">
+                </div>
+                {% endfor %}
             </section>
 
             <section id="albums-detected" class="editable-content" style="display: none">
@@ -97,7 +105,8 @@
                         <td>{{ song['Track Number'] }}</td>
                         <td>{{ song['Date'] }}</td>
 
-                        <td><a href="/edit?path={{ song['Path'] }}"> <img class="edit-btn" src="static\imgs\edit.png" alt="Edit"></a>
+                        <td><a href="/edit?path={{ song['Path'] }}"> <img class="edit-btn" src="static\imgs\edit.png"
+                                    alt="Edit"></a>
                         </td>
                     </tr>
                     {% endfor %}
