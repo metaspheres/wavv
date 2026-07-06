@@ -102,3 +102,28 @@ def save_album():
             file.save()
 
     return jsonify({"success": True})
+
+@app.route("/save-artist", methods=["POST"])
+def save_artist():
+    old_artist = request.form.get('old_artist')
+    new_artist= request.form.get('new_artist')
+    folder_path = session.get('folder_path')
+
+    library = get_library(folder_path)
+
+    for song in library:
+        if song['Artist'] == old_artist:
+            path = song['Path']
+            file = MutagenFile(path)
+
+            if file.tags is None:
+                file.add_tags()
+
+            if path.lower().endswith('.mp3'):
+                file.tags['TALB'] = TALB(encoding=3, text=[new_artist])
+            else:
+                file['artist'] = [new_artist]
+
+            file.save()
+
+    return jsonify({"success": True})

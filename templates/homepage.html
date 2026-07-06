@@ -129,7 +129,17 @@
             </div>
         </div>
     </div>
-
+    <div id="artist-modal" class="modal-overlay" style="display:none;">
+        <div class="modal-content">
+            <h3>Edit Artist Name</h3>
+            <input type="text" id="modal-artist-name" />
+            <div id="modal-song-list"></div>
+            <div class="modal-actions">
+                <button onclick="saveArtistEdit()">Save</button>
+                <button onclick="closeArtistModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
