@@ -66,7 +66,12 @@ header{
   gap: 10px;
   flex-wrap: wrap;
 
-}
+.main-container{
+  max-width: 1300px;
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 2%;  
+  color: var(--font-color);
 
 .header-container{
   display: flex;
@@ -95,18 +100,17 @@ header, .main-container {
   font-size: 14px; 
 }
 
-/* -----------------
-        MAIN
--------------------- */
-
-.main-container {
-  display: flex;
-  flex-direction: row;
-  padding-top: 2%;  
-  color: var(--font-color);
+.main-section{
+  display: grid;
   border:var(--accents-color);
-  min-height: 75vh;
-  gap: 10px;
+	grid-template-columns: 2fr 3fr;
+  gap:10px;
+  justify-content: center;
+  padding: 10px 5px 10px 0px ;
+
+  /* display: flex;
+  align-items: flex-start; */
+
 }
 
 
@@ -117,34 +121,11 @@ header, .main-container {
   padding-left: 14px;
 }
 
-
-
-.parent-container{
-  background-color: var(--light-bg-color);
-  border-radius: 10px;
-  display: flex;
-  flex-direction: row;
-  font-family: "Rubik", sans-serif;
-  font-size: 14px; 
-  padding: 14px;
-  color: var(--body-text-color);
-  height: 75vh;
-
-}
-.main-push {
-  transition: margin-left .5s;
-  padding: 20px;
-}
-/* -------------------
-SEARCH FOLDER SECTION
----------------------- */
-.push-sidenav {
-  margin:0;
-  top: 0; 
-  left: 0;
-  overflow-x: hidden;
-  width: 0;
-  padding:0;
+.path-container-grid {
+  display: grid;
+  grid-template-rows: 1fr; 
+  align-items: flex-start;
+ 
 }
 
 #push-btn{
@@ -164,6 +145,14 @@ SEARCH FOLDER SECTION
   background: var(--accents-color);
 }
 
+@media screen and (max-width: 768px) {
+  .path-container-grid {
+    display: grid;
+    grid-template-columns: auto-fit 1fr; 
+    align-items: flex-start;
+  
+  }
+}
 
 #push-btn img{
   image-rendering: smooth;

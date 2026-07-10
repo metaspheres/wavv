@@ -9,111 +9,54 @@
 </head>
 
 <body>
-    <header>
-        {% include "header.html" %}
-    </header>
+    {% include "header.html" %}
 
-
-    <main class="main-container">
-        <section id="mySidenav" class="search-data parent-container push-sidenav">
-            <section class="text-container">
-                <h2>Search folder</h2>
-            </section>
-
-            <section class="search folder-list">
-                <section class="search-bar-container">
-                    <section class="text-input-class">
-                        <label for="folder-browser-input"></label>
-                        <form action="/load" method="post" class="form-submit">
-                            <input id="folder-browser-input" type="text" name="path" placeholder="C:/Users">
-                    </section>
-                    <section class="load-library-class">
+    <div class="main-container">
+        <div class="main-section">
+            <div class="path-container-grid">
+                <div class="path-container">
+                    <label for="folder-browser-input"></label>    
+                    <form action="/load" method="post" class="form-submit">
+                        <span>
+                        <input id="folder-browser-input" type="text" name="path" placeholder="C:/Users">
+                        </span>  
+                        <span>
                         <input type="hidden" name="folder_path" id="selected-path">
-                        <button type="submit" id="load-library"><img src="static/imgs/search-yellow.png"></button>
-                        </form>
-                    </section>
+                        <button type="submit" id="load-library"><img src="static/imgs/search.png"></button>
+                        </span>
+                    </form>
+                    <div id="suggestions"></div>
 
-                </section>
-
-            </section>
-
-            <div id="suggestions"></div>
-        </section>
-        <button id="push-btn" onclick="openNav()"><img src="../static/imgs/search-black.png"></button>
-        <section id="main" class="batch-edit parent-container main-push">
-            <section class="sidebar text-container">
-                <h2 class="bar-item">Batch Edit</h5>
-                    <button class="bar-item tab-button tablink"
-                        onclick="openEditor('artists-detected')">Artists</button>
-                    <button class="bar-item tab-button tablink" onclick="openEditor('albums-detected')">Albums</button>
-            </section>
-
-            <section id="artists-detected" class="editable-content">
-                <section class="text-container">
-                    <h2>Artists Found</h2>
-                </section>
-                {% for artist in artists %}
-                <div class="artist-card" data-artist="{{ artist }}">
-                    <span class="artist-name">{{ artist }}</span>
-                    <img src="./../static/imgs/edit.png" class="edit-btn" onclick="openArtistModal('{{ artist }}')">
                 </div>
-                {% endfor %}
-            </section>
+            </div>
 
-            <section id="albums-detected" class="editable-content" style="display: none">
-                <section class="text-container">
-                    <h2>Albums found</h2>
-
-                </section>
-                {% for album_name, songs in albums.items() %}
-                <div class="album-card" data-album="{{ album_name }}">
-                    <span class="album-name">{{ album_name }}</span>
-                    <span class="album-count">{{ songs|length }}</span>
-                    <img src="./../static/imgs/edit.png" class="edit-btn" onclick="openAlbumModal('{{ album_name }}')">
-                </div>
-                {% endfor %}
-            </section>
-        </section>
-        <section class="main-push song-edit parent-container">
-            <section class="data-table-container">
-                <section class="text-container">
-                    <h2>Album details</h2>
-                </section>
-                <section class="album-info-container">
-                    <figure class="artwork-container">
-
-                    </figure>
-                    <table class="album-info-table">
-
-                    </table>
-                </section>
-                <table>
-                    <tr>
-                        <th>Artist</th>
-                        <th>Title</th>
-                        <th>Album</th>
-                        <th>Track Number</th>
-                        <th>Date</th>
-                        <th>Edit</th>
-                    </tr>
-                    {% for song in data %}
-                    <tr>
-                        <td>{{ song['Artist'] }}</td>
-                        <td>{{ song['Title'] }}</td>
-                        <td>{{ song['Album'] }}</td>
-                        <td>{{ song['Track Number'] }}</td>
-                        <td>{{ song['Date'] }}</td>
-
-                        <td><a href="/edit?path={{ song['Path'] }}"> <img class="edit-btn" src="static\imgs\edit.png"
-                                    alt="Edit"></a>
-                        </td>
-                    </tr>
-                    {% endfor %}
-
-                </table>
-            </section>
-        </section>
-    </main>
+        
+        <div class="music-data-container">
+        <table>
+            <tr>
+                <th>Artist</th>
+                <th>Title</th>
+                <th>Album</th>
+                <th>Track Number</th>
+                <th>Date</th>
+                <th>Edit</th>
+            </tr>
+                {% for song in data %}
+            <tr>
+                    <td>{{ song['Artist'] }}</td>
+                    <td>{{ song['Title'] }}</td>
+                    <td>{{ song['Album'] }}</td>
+                    <td>{{ song['Track Number'] }}</td>
+                    <td>{{ song['Date'] }}</td>
+                  
+                    <td><a href="/edit?path={{ song['Path'] }}">  <img src="static\imgs\edit.png" alt="Edit"></a></td>
+            </tr>
+                {% endfor %}   
+                
+        </table>
+        </div>
+        </div>
+    </div>
     {% include "footer.html" %}
     <script src="static\js\main.js"></script>
     <script> const albumData = {{ albums | tojson }} </script>
