@@ -53,9 +53,9 @@
                     <h2>Artists Found</h2>
                 </section>
                 {% for artist in artists %}
-                <div class="artist-card">
+                <div class="artist-card" data-artist="{{ artist }}">
                     <span class="artist-name">{{ artist }}</span>
-                    <img src="./../static/imgs/edit.png" class="edit-btn">
+                    <img src="./../static/imgs/edit.png" class="edit-btn" onclick="openArtistModal('{{ artist }}')">
                 </div>
                 {% endfor %}
             </section>
@@ -76,7 +76,6 @@
         </section>
         <section class="main-push song-edit parent-container">
             <section class="data-table-container">
-                <!-- maybe make 2 classes, one for all containers, other section specific -->
                 <section class="text-container">
                     <h2>Album details</h2>
                 </section>
@@ -133,7 +132,7 @@
         <div class="modal-content">
             <h3>Edit Artist Name</h3>
             <input type="text" id="modal-artist-name" />
-            <div id="modal-song-list"></div>
+            <div id="modal-artist-list"></div>
             <div class="modal-actions">
                 <button onclick="saveArtistEdit()">Save</button>
                 <button onclick="closeArtistModal()">Cancel</button>

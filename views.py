@@ -120,10 +120,9 @@ def save_artist():
                 file.add_tags()
 
             if path.lower().endswith('.mp3'):
-                file.tags['TALB'] = TALB(encoding=3, text=[new_artist])
+                file.tags['TPE1'] = TPE1(encoding=3, text=[new_artist])
             else:
                 file['artist'] = [new_artist]
-
             file.save()
 
     return jsonify({"success": True})
