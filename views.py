@@ -57,7 +57,7 @@ def save():
 
     file.save()
 
-    return redirect(url_for("homepage"))
+    return jsonify({"success": True})
 
 @app.route("/browse", methods=["GET"])
 

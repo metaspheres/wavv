@@ -1,8 +1,15 @@
+// ====================
+// GLOBAL
+// ====================
+
 document.getElementById("folder-browser-input").addEventListener("input", getPath)
 let navOpen = false;
 let sideNav = document.getElementById("mySidenav")
 let mainPush = document.querySelectorAll("main-push")
-//fetch folder paths
+
+// ====================
+// FETCH FOLDER PATH
+// ====================
 
 function getPath(event) {
     const path = event.target.value
@@ -36,9 +43,57 @@ document.querySelector("form").addEventListener("submit", () => {
     }
 })
 
-//modals
+// ====================
+// SIDEBAR PUSH
+// ====================
 
-//album
+function openNav() {
+    if (navOpen === false) {
+        navOpen = true
+        document.getElementById("mySidenav").style.width = "450px";
+    } else {
+        navOpen = false
+        document.getElementById("mySidenav").style.width = "0";
+        document.querySelectorAll("main-push").style.marginLeft = "0";
+    }
+
+}
+
+function openEditor(selectionName) {
+    let i;
+    let x = document.getElementsByClassName("editable-content");
+    for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+        console.log("wat")
+    }
+    document.getElementById(selectionName).style.display = "block";
+}
+
+// ====================
+// MODALS
+// ====================
+
+function openArtistModal(artistName) {
+    const artistModal = document.getElementById("artist-modal")
+    const artistNameInput = document.getElementById("modal-artist-name")
+    const artist = document.getElementById("modal-artist-list")
+    artistModal.dataset.oldArtist = artistName
+
+    artistNameInput.value = artistName
+    artist.innerHTML = ''
+    console.log(artistName)
+
+    const div = document.createElement('div')
+    div.textContent = artistName
+
+    artistModal.style.display = 'flex'
+
+}
+
+function closeArtistModal() {
+    document.getElementById('artist-modal').style.display = 'none';
+}
+
 function openAlbumModal(albumName) {
     const modal = document.getElementById('album-modal');
     const nameInput = document.getElementById('modal-album-name');
@@ -62,47 +117,29 @@ function closeAlbumModal() {
     document.getElementById('album-modal').style.display = 'none';
 }
 
-//artist
-function openArtistModal(artistName) {
-    const artistModal = document.getElementById("artist-modal")
-    const artistNameInput = document.getElementById("modal-artist-name")
-    const artist = document.getElementById("modal-artist-list")
-    artistModal.dataset.oldArtist = artistName
+function openSongModal(index) {
+    const song = songData[index]
+    const songModal = document.getElementById("song-modal")
 
-    artistNameInput.value = artistName
-    artist.innerHTML = ''
-    console.log(artistName)
+    songModal.dataset.songIndex = index
 
-    const div = document.createElement('div')
-    div.textContent = artistName
+    document.querySelector('input[name="artist"]').value = song['Artist']
+    document.querySelector('input[name="title"]').value = song['Title']
+    document.querySelector('input[name="album"]').value = song['Album']
+    document.querySelector('input[name="track-number"]').value = song['Track Number']
+    document.querySelector('input[name="date"]').value = song['Date']
+    document.querySelector('input[name="path"]').value = song['Path']
 
-    artistModal.style.display = 'flex'
-
+    songModal.style.display = 'flex'
 }
 
-function closeArtistModal() {
-    document.getElementById('artist-modal').style.display = 'none';
+function closeSongModal() {
+    document.getElementById('song-modal').style.display = 'none'
 }
 
-
-// SAVING ARTIST AND ALBUM EDITS
-
-function saveAlbumEdit() {
-    const modal = document.getElementById('album-modal');
-    const oldName = modal.dataset.oldAlbum;
-    const newName = document.getElementById('modal-album-name').value;
-
-    fetch('/save-album', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: 'old_album=' + encodeURIComponent(oldName) + '&new_album=' + encodeURIComponent(newName)
-    })
-        .then(response => {
-            if (response.ok) {
-                window.location.reload();
-            }
-        });
-}
+// =======================
+// EDIT METADATA FUNCTIONS
+// =======================
 
 function saveArtistEdit() {
     const artistEditModal = document.getElementById('artist-modal');
@@ -122,27 +159,48 @@ function saveArtistEdit() {
         });
 }
 
-// sidebar w/push
+function saveAlbumEdit() {
+    const modal = document.getElementById('album-modal');
+    const oldName = modal.dataset.oldAlbum;
+    const newName = document.getElementById('modal-album-name').value;
 
-
-function openNav() {
-    if (navOpen === false) {
-        navOpen = true
-        document.getElementById("mySidenav").style.width = "450px";
-    } else {
-        navOpen = false
-        document.getElementById("mySidenav").style.width = "0";
-        document.querySelectorAll("main-push").style.marginLeft = "0";
-    }
-
+    fetch('/save-album', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: 'old_album=' + encodeURIComponent(oldName) + '&new_album=' + encodeURIComponent(newName)
+    })
+        .then(response => {
+            if (response.ok) {
+                window.location.reload();
+            }
+        });
 }
 
-function openEditor(selectionName) {
-    let i;
-    let x = document.getElementsByClassName("editable-content");
-    for (i = 0; i < x.length; i++) {
-        x[i].style.display = "none";
-        console.log("wat")
-    }
-    document.getElementById(selectionName).style.display = "block";
+function saveSongEdit() {
+    const path = document.querySelector('input[name=path').value
+    const artist = document.querySelector('input[name="artist"]').value
+    const title = document.querySelector('input[name="title"').value
+    const album = document.querySelector('input[name="album"]').value
+    const tracknumber = document.querySelector('input[name="track-number"]').value;
+    const date = document.querySelector('input[name= "track-number"]').value
+
+    fetch('/save', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: 'path=' + encodeURIComponent(path) +
+            '&artist=' + encodeURIComponent(artist) +
+            '&title=' + encodeURIComponent(title) +
+            '&album=' + encodeURIComponent(album) +
+            '&track-number=' + encodeURIComponent(tracknumber) +
+            '&date=' + encodeURIComponent(date)
+    })
+
+        .then(response => {
+            if (response.ok) {
+                window.location.reload();
+            }
+        }
+
+        )
 }
+

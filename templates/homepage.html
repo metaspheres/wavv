@@ -104,8 +104,8 @@
                         <td>{{ song['Track Number'] }}</td>
                         <td>{{ song['Date'] }}</td>
 
-                        <td><a href="/edit?path={{ song['Path'] }}"> <img class="edit-btn" src="static\imgs\edit.png"
-                                    alt="Edit"></a>
+                        <td><img class="edit-btn" src="static\imgs\edit.png" alt="Edit"
+                                onclick="openSongModal({{ loop.index0 }})">
                         </td>
                     </tr>
                     {% endfor %}
@@ -117,6 +117,7 @@
     {% include "footer.html" %}
     <script src="static\js\main.js"></script>
     <script> const albumData = {{ albums | tojson }} </script>
+    <script> const songData = {{ data | tojson }} </script>
     <div id="album-modal" class="modal-overlay" style="display:none;">
         <div class="modal-content">
             <h3>Edit Album</h3>
@@ -138,6 +139,23 @@
                 <button onclick="closeArtistModal()">Cancel</button>
             </div>
         </div>
+    </div>
+    <div id="song-modal" class="modal-overlay" style="display:none;">
+
+        <form class="modal-content">
+            <input type="text" name="artist" class="song-data">
+            <input type="text" name="title" class="song-data">
+            <input type="text" name="album" class="song-data">
+            <input type="text" name="track-number" class="song-data">
+            <input type="number" name="date" class="song-data">
+            <input type="hidden" name="path" class="song-data">
+            <div class="modal-actions">
+            <button type="button" type="submit" onclick="saveSongEdit()">Save</button>
+            <button onclick="closeSongModal()">Cancel</button>
+            </div>
+
+        </form>
+
     </div>
 </body>
 
