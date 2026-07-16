@@ -7,17 +7,8 @@ June 2026 update:
 
 WAVV is a song metadata editor using Flask.
 
-## Requirements
-- Python 3.10+
-- pip
-
 ## How to test
 
-### Requirements
-- Python 3.10+
-- pip
-
-### Setup
 This is a work in progress. To test, open the Windows command line and run these commands one by one:
 - git clone https://github.com/metaspheres/wavv.git
 - cd wavv
