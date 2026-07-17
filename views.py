@@ -72,7 +72,6 @@ def browse():
 
 def load_library():
     path = request.form.get(('folder_path'))
-    print("Received path:", path + "end of received path") 
 
     session['folder_path'] = path
 

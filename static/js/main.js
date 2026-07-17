@@ -43,6 +43,32 @@ document.querySelector("form").addEventListener("submit", () => {
     }
 })
 
+//open folder dialogue instead
+document.getElementById('load-directory').addEventListener('click', async () => {
+  const folderPath = await pywebview.api.open_path_folder();
+
+  if (folderPath) {
+    document.getElementById('folderPath').value = folderPath;
+
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = '/load'; 
+
+    const input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = 'folder_path';
+    input.value = folderPath;
+
+    form.appendChild(input);
+    document.body.appendChild(form);
+    form.submit();
+  }
+});
+
+window.addEventListener('pywebviewready', () => {
+  document.getElementById('load-directory').disabled = false; 
+});
+
 // ====================
 // SIDEBAR PUSH
 // ====================
