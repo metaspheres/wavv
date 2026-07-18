@@ -226,6 +226,29 @@ SEARCH FOLDER SECTION
 
 }
 
+#load-directory{
+  background-color: var(--main-bg-color);
+  border: none;
+  border-radius: 0px 10px 10px 0px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  height: 35px;
+  width: 35px;
+
+}
+
+#load-directory img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+#load-directory:hover{
+  background-color: #1a1a1a;
+
+}
 .suggestions-container{
 
   background-color: #242525;

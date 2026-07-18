@@ -32,6 +32,12 @@
                         <button type="submit" id="load-library"><img src="static/imgs/search-yellow.png"></button>
                         </form>
                     </section>
+                    <section class="load-library-class">
+                        <button id="load-directory"><img src="static/imgs/search-yellow.png"></button>
+                        <input type="text" id="folderPath" placeholder="No folder selected" readonly>
+
+                    </section>
+
 
                 </section>
 
@@ -150,8 +156,8 @@
             <input type="number" name="date" class="song-data">
             <input type="hidden" name="path" class="song-data">
             <div class="modal-actions">
-            <button type="button" type="submit" onclick="saveSongEdit()">Save</button>
-            <button onclick="closeSongModal()">Cancel</button>
+                <button type="button" type="submit" onclick="saveSongEdit()">Save</button>
+                <button onclick="closeSongModal()">Cancel</button>
             </div>
 
         </form>
