@@ -15,35 +15,31 @@
 
 
     <main class="main-container">
-        <section id="mySidenav" class="search-data parent-container push-sidenav">
-            <section class="text-container">
-                <h2>Search folder</h2>
+        <section id="mySidenav" class="search-directory__wrapper parent-container push-sidenav">
+            <section>
+                <h2 class="text-container">Search folder</h2>
+                <span class="text-subtitle__small">Click the folder icon load or type the path in search:</span>
             </section>
+            <section class="sidenav-input__wrapper">
+                <input class="sidenav-input__folderpath" type="text" id="folderPath" placeholder="No folder selected"
+                    readonly>
 
-            <section class="search folder-list">
-                <section class="search-bar-container">
-                    <section class="text-input-class">
-                        <label for="folder-browser-input"></label>
-                        <form action="/load" method="post" class="form-submit">
-                            <input id="folder-browser-input" type="text" name="path" placeholder="C:/Users">
-                    </section>
-                    <section class="load-library-class">
-                        <input type="hidden" name="folder_path" id="selected-path">
-                        <button type="submit" id="load-library"><img src="static/imgs/search-yellow.png"></button>
-                        </form>
-                    </section>
-                    <section class="load-library-class">
-                        <button id="load-directory"><img src="static/imgs/search-yellow.png"></button>
-                        <input type="text" id="folderPath" placeholder="No folder selected" readonly>
-
-                    </section>
-
-
-                </section>
+                <button class="load-btn__wrapper" id="load-directory"><img class="load-btn__img"
+                        src="static/imgs/folder-search.png"></button>
 
             </section>
+            <label for="folder-browser-input"></label>
 
-            <div id="suggestions"></div>
+            <form action="/load" method="post" class="sidenav-input__wrapper">
+                <input class="sidenav-input__folderpath" id="folder-browser-input" type="text" name="path"
+                    placeholder="C:\Your Folder">
+                <input type="hidden" name="folder_path" id="selected-path">
+                <button type="submit" class="load-btn__wrapper" id="load-library"><img class="load-btn__img"
+                        src="static/imgs/search-yellow.png"></button>
+            </form>
+        </section>
+
+        <div id="suggestions"></div>
         </section>
         <button id="push-btn" onclick="openNav()"><img src="../static/imgs/search-black.png"></button>
         <section id="main" class="batch-edit parent-container main-push">

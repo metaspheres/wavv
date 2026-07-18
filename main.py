@@ -28,7 +28,7 @@ class Api:
     
 
 def run_flask():
-    app.run(port=port, use_reloader=False)
+    app.run(port=port, debug=True, use_reloader=False)
 
 if __name__ == "__main__":
     api = Api()
@@ -45,6 +45,6 @@ if __name__ == "__main__":
         js_api=api
     )
 
-    webview.start()
+    webview.start(debug=True)
 
 # ---- PyWebView ---- #
