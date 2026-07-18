@@ -7,11 +7,9 @@ import socket
 app = Flask(__name__)
 app.config['TEMPLATES_AUTO_RELOAD'] = True 
 
-app.secret_key = os.environ.get('SECRET_KEY', 'dev-fallback-key')
-
+app.secret_key = os.environ.get('SECRET_KEY', os.urandom(24).hex())
 
 from views import *
-
 
 # ---- PyWebView ---- #
 
@@ -30,7 +28,7 @@ class Api:
     
 
 def run_flask():
-    app.run(port=port, debug=True, use_reloader=False)
+    app.run(port=port, use_reloader=False)
 
 if __name__ == "__main__":
     api = Api()
@@ -43,10 +41,10 @@ if __name__ == "__main__":
         f"http://localhost:{port}",
         width=800,
         height=600,
-        fullscreen=True,
+        maximized=True,
         js_api=api
     )
 
-    webview.start(debug=True)
+    webview.start()
 
 # ---- PyWebView ---- #
