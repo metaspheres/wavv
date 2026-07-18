@@ -2,20 +2,21 @@
     GLOBAL  & ROOT
 -------------------- */
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
-@font-face{
-	font-family: "Rubik";
-	src: url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet')
+
+@font-face {
+  font-family: "Rubik";
+  src: url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet')
 }
 
 
 :root {
   --body-text-color: #F6F0E9;
   --accents-color: #ebb31b;
-  --main-bg-color:#080b0f;
-  --light-bg-color:#242525;
+  --main-bg-color: #080b0f;
+  --light-bg-color: #242525;
   --container-color: #242933;
   --light-component-color: #555;
-  }
+}
 
 ::-webkit-scrollbar {
   width: 5px;
@@ -23,10 +24,11 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background:  #555; 
+  background: #555;
   cursor: pointer;
 
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accents-color)
 }
@@ -49,17 +51,18 @@ body {
       HEADER 
 ---------------------- */
 
-.title{
-  color:var(--accents-color);
+.title {
+  color: var(--accents-color);
   font-family: "Rubik", sans-serif;
-  font-size: 22px; /* for compability */
+  font-size: 22px;
+  /* for compability */
   font-size: min(max(2rem, 4vw), 44px);
-	font-optical-sizing: auto;
-	font-weight: 400;
-  padding: 10% 0% 15% 0% ;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  padding: 10% 0% 15% 0%;
 }
 
-header{
+header {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -68,14 +71,14 @@ header{
 
 }
 
-.header-container{
+.header-container {
   display: flex;
   justify-content: center;
   align-items: center;
   padding-right: 40px;
 }
 
-header img{
+header img {
   image-rendering: smooth;
   width: 100%;
   max-width: 180px;
@@ -84,15 +87,16 @@ header img{
 
 }
 
-header, .main-container {
+header,
+.main-container {
   min-width: 600px;
 }
 
 
-.header-under-text{
-  color:var(--light-bg-color);
+.header-under-text {
+  color: var(--light-bg-color);
   font-family: "Rubik", sans-serif;
-  font-size: 14px; 
+  font-size: 14px;
 }
 
 /* -----------------
@@ -102,15 +106,15 @@ header, .main-container {
 .main-container {
   display: flex;
   flex-direction: row;
-  padding-top: 2%;  
+  padding-top: 2%;
   color: var(--font-color);
-  border:var(--accents-color);
+  border: var(--accents-color);
   min-height: 75vh;
   gap: 10px;
 }
 
 
-.text-container{
+.text-container {
   color: var(--accents-color);
   font-family: "Rubik", sans-serif;
   background-color: var(--light-bg-color);
@@ -119,35 +123,63 @@ header, .main-container {
 
 
 
-.parent-container{
+.parent-container {
   background-color: var(--light-bg-color);
   border-radius: 10px;
   display: flex;
   flex-direction: row;
   font-family: "Rubik", sans-serif;
-  font-size: 14px; 
+  font-size: 14px;
   padding: 14px;
   color: var(--body-text-color);
   height: 75vh;
 
 }
+
 .main-push {
   transition: margin-left .5s;
   padding: 20px;
 }
+
 /* -------------------
 SEARCH FOLDER SECTION
 ---------------------- */
+.text-subtitle__small{
+  color: var(--light-component-color);
+  padding: 0 14px 0 14px;
+
+}
 .push-sidenav {
-  margin:0;
-  top: 0; 
+  margin: 0;
+  top: 0;
   left: 0;
   overflow-x: hidden;
   width: 0;
-  padding:0;
+  padding: 0;
+}
+.sidenav-input__wrapper{
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content:space-between;
+  padding: 0 14px 0 14px;
+
+
+}
+.sidenav-input__folderpath {
+  color: var(--light-bg-color);
+  border: none;
+  font-family: "Rubik", sans-serif;
+  font-size: 14px;
+  height: inherit;
+  padding: 5px 10px;
+  width: 100%;
+  background-color: var(--light-component-color);
 }
 
-#push-btn{
+
+
+#push-btn {
   border: none;
   display: flex;
   align-items: center;
@@ -165,49 +197,35 @@ SEARCH FOLDER SECTION
 }
 
 
-#push-btn img{
+#push-btn img {
   image-rendering: smooth;
   max-width: 30px;
   object-fit: contain;
 
 }
-.search-data{
+
+.search-directory__wrapper {
   display: flex;
   flex-direction: column;
-  align-items: stretch;
+  gap:10px;
 }
 
-.search-bar-container{
-  padding: 14px;
-  display: flex;
-  flex-direction: row;
-}
-
-.form-submit {
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-}
-
-#folder-browser-input{
-  font-size:14px;
-  font-family: "Rubik", sans-serif;
-  height:inherit;
-  padding: 5px 10px;
-  height: 35px;
-  border: none;
-  width: 100%;
-  border-radius: 15px 0px 0px 15px;
-  background-color: var(--main-bg-color);
-
-}
-
-#load-library{
+.load-btn__wrapper {
+  object-fit: contain;
   background-color: var(--main-bg-color);
   border: none;
-  border-radius: 0px 10px 10px 0px;
+  border-radius: 10px 10px 10px 10px;
+  width: 45px;
+  height: 45px;
+
+}
+
+.load-btn__wrapper:hover {
+  background-color: #1a1a1a;
+}
+
+.load-btn__img {
   text-align: center;
-  text-decoration: none;
   font-size: 16px;
   cursor: pointer;
   height: 35px;
@@ -215,41 +233,7 @@ SEARCH FOLDER SECTION
 
 }
 
-#load-library img{
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-#load-library:hover{
-  background-color: #1a1a1a;
-
-}
-
-#load-directory{
-  background-color: var(--main-bg-color);
-  border: none;
-  border-radius: 0px 10px 10px 0px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;
-  cursor: pointer;
-  height: 35px;
-  width: 35px;
-
-}
-
-#load-directory img{
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-#load-directory:hover{
-  background-color: #1a1a1a;
-
-}
-.suggestions-container{
+.suggestions-container {
 
   background-color: #242525;
   border-radius: 10px;
@@ -269,24 +253,25 @@ SEARCH FOLDER SECTION
 
 }
 
-#suggestions div:hover, div:focus {
-    background-color: var(--container-color);
+#suggestions div:hover,
+div:focus {
+  background-color: var(--container-color);
 }
 
-.text-input-class{
-  flex: 2;
-}
-.load-library-container{
+
+.load-library-container {
   flex: 1;
 }
+
 /* ----------------
 BATCH EDIT SECTION
 ------------------- */
-.batch-edit{
+.batch-edit {
   padding-left: 0px;
   flex: 1;
 }
-.sidebar{
+
+.sidebar {
   display: flex;
   flex-direction: column;
   color: var(--accents-color);
@@ -295,7 +280,7 @@ BATCH EDIT SECTION
   position: sticky;
 }
 
-.tab-button{
+.tab-button {
   text-decoration: none;
   border: none;
   background-color: var(--light-bg-color);
@@ -307,23 +292,25 @@ BATCH EDIT SECTION
   border-left: 3px solid var(--accents-color);
 }
 
-.tab-button:hover{
-  background-color: var(--accents-color);
-  cursor: pointer;
-  color: var(--main-bg-color)
-}
-.tab-button::selection{
+.tab-button:hover {
   background-color: var(--accents-color);
   cursor: pointer;
   color: var(--main-bg-color)
 }
 
+.tab-button::selection {
+  background-color: var(--accents-color);
+  cursor: pointer;
+  color: var(--main-bg-color)
+}
 
 
-.sidebar h2{
+
+.sidebar h2 {
   padding-left: 14px;
 }
-#albums-detected{
+
+#albums-detected {
   background-color: var(--light-bg-color);
   margin-left: 10px;
   border-radius: 10px;
@@ -331,14 +318,14 @@ BATCH EDIT SECTION
   flex: 1;
   flex-direction: column;
   font-family: "Rubik", sans-serif;
-  font-size: 14px; 
+  font-size: 14px;
   padding: 0px 14px 14px 14px;
   color: var(--body-text-color);
-  overflow: scroll; 
+  overflow: scroll;
 
 }
 
-#artists-detected{
+#artists-detected {
   background-color: var(--light-bg-color);
   margin-left: 10px;
   border-radius: 10px;
@@ -346,56 +333,59 @@ BATCH EDIT SECTION
   flex: 1;
   flex-direction: column;
   font-family: "Rubik", sans-serif;
-  font-size: 14px; 
+  font-size: 14px;
   padding: 0px 14px 14px 14px;
   color: var(--body-text-color);
-  overflow: scroll; 
+  overflow: scroll;
 }
 
 /* -----------------
 SONG TABLE DATA
 -------------------- */
 
-.song-edit{
-  
+.song-edit {
+
   display: flex;
   flex-direction: column;
   margin-left: 10px;
   flex: 1;
-	font-family: "Rubik", sans-serif;
-	font-optical-sizing: auto;
-	font-weight: 400;
-	font-style: normal;
-  font-size:14px;
+  font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
   padding: 14px;
   background-color: var(--light-bg-color);
   border-radius: 10px;
- 
+
 
 }
-.data-table-container{
- overflow: scroll; 
+
+.data-table-container {
+  overflow: scroll;
 
 }
+
 table {
   border-collapse: collapse;
   color: var(--body-text-color);
 }
 
 
-.music-data th{
+.music-data th {
   color: var(--accents-color);
 
 }
 
-td, th {
+td,
+th {
   text-align: left;
   padding: 4px;
   text-align: left;
 
 }
 
-.edit-btn{
+.edit-btn {
   width: 20px;
   height: auto;
   object-fit: contain;
@@ -408,7 +398,7 @@ input::placeholder {
 }
 
 
-.album-card{
+.album-card {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -418,7 +408,7 @@ input::placeholder {
 }
 
 
-.artist-card{
+.artist-card {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -427,20 +417,22 @@ input::placeholder {
   padding: 5px;
 }
 
-.artist-name{
+.artist-name {
   font-size: 14px;
-  flex:4;
+  flex: 4;
 }
-.album-name{
+
+.album-name {
   font-size: 14px;
-  flex:4;
+  flex: 4;
 }
-.album-count{
+
+.album-count {
   font-size: 14px;
   width: 60px;
 }
 
-.edit-album-btn{
+.edit-album-btn {
   background-color: var(--light-bg-color);
   color: var(--accents-color);
   font-family: "Rubik", sans-serif;
@@ -456,70 +448,70 @@ input::placeholder {
 ------------------- */
 
 .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
 .modal-content {
-    background-color: var(--light-bg-color);
-    border-radius: 10px;
-    padding: 24px;
-    min-width: 400px;
-    max-width: 600px;
-    font-family: "Rubik", sans-serif;
-    color: var(--body-text-color);
-    height: 500px;
-    overflow:scroll;
+  background-color: var(--light-bg-color);
+  border-radius: 10px;
+  padding: 24px;
+  min-width: 400px;
+  max-width: 600px;
+  font-family: "Rubik", sans-serif;
+  color: var(--body-text-color);
+  height: 500px;
+  overflow: scroll;
 
 }
 
 .modal-content h3 {
-    margin-top: 0;
+  margin-top: 0;
 }
 
 .modal-content input {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 6px;
-    background-color: var(--main-bg-color);
-    color: var(--body-text-color);
-    font-family: "Rubik", sans-serif;
-    font-size: 14px;
-    margin-bottom: 16px;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--main-bg-color);
+  color: var(--body-text-color);
+  font-family: "Rubik", sans-serif;
+  font-size: 14px;
+  margin-bottom: 16px;
 }
 
 #modal-song-list div {
-    padding: 4px 0;
-    font-size: 13px;
-    border-bottom: 1px solid var(--container-color);
+  padding: 4px 0;
+  font-size: 13px;
+  border-bottom: 1px solid var(--container-color);
 }
 
 .modal-actions {
-    margin-top: 16px;
-    display: flex;
-    gap: 10px;
-    justify-content: flex-end;
+  margin-top: 16px;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
 }
 
 .modal-actions button {
-    padding: 8px 20px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-family: "Rubik", sans-serif;
-    font-size: 14px;
-    background-color: var(--accents-color);
-    color: var(--main-bg-color);
-    font-weight: 600;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: "Rubik", sans-serif;
+  font-size: 14px;
+  background-color: var(--accents-color);
+  color: var(--main-bg-color);
+  font-weight: 600;
 }
 
 
@@ -527,7 +519,7 @@ input::placeholder {
       FOOTER
 ------------------ */
 
-.footer{
+.footer {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -536,25 +528,25 @@ input::placeholder {
   bottom: 0;
 }
 
-.footer p{
-  color:var(--body-text-color);
+.footer p {
+  color: var(--body-text-color);
   font-family: "Rubik", sans-serif;
-  font-size: 14px; 
-	font-optical-sizing: auto;
+  font-size: 14px;
+  font-optical-sizing: auto;
   padding: 20px;
 
 }
 
 .footer a {
-  color:inherit;
+  color: inherit;
   text-decoration: none;
 
 }
 
 .footer a:hover {
   color: var(--accents-color);
-  text-decoration:none; 
-  cursor:pointer;  
+  text-decoration: none;
+  cursor: pointer;
 }
 
 
@@ -563,7 +555,7 @@ input::placeholder {
 ----------------------- */
 
 @media (max-width: 768px) {
-.main-container {
+  .main-container {
     flex-direction: column;
     flex-wrap: wrap;
   }
