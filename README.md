@@ -39,12 +39,13 @@ For PowerShell: If you get a "running scripts is disabled" error, run this once:
 
 **Mac and Linux:**
 
-Note: some systems require `python3` instead of `python`.
-Run first:
+	python -m venv venv`
+
+Note: some systems require `python3` instead of `python`, so if the above returns an error try:
 
      python3 -m venv venv
 
-Then:
+Lastly, activate the Virtual Environment:
      
      source venv/bin/activate
 
