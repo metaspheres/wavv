@@ -38,6 +38,7 @@ For PowerShell: If you get a "running scripts is disabled" error, run this once:
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 
 **Mac and Linux:**
+
 Note: some systems require `python3` instead of `python`.
 Run first:
 
@@ -47,7 +48,7 @@ Then:
      
      source venv/bin/activate
 
-Install the dependencies on the virtual environment:
+## Install the dependencies on the virtual environment (all OS's):
 
      pip install -r requirements.txt
 
@@ -63,11 +64,11 @@ PyWebView will automatically find an available port and open WAVV in its own win
 
 ## Known issues on Linux (tested on Arch / EndeavourOS)
 
-pywebview (which WAVV uses to open a native window) can hit a few common
+pywebview (which WAVV uses to open a native window) can run into a few common
 issues on Linux. These seem to stem from missing GTK bindings and from
-Wayland-related rendering bugs in WebKitGTK. This has been confirmed on
-Arch/EndeavourOS with KDE Plasma; other distros may or may not be affected.
-If you hit these on a different distro, please open an issue and let me know.
+Wayland-related rendering bugs in WebKitGTK. I have been able to confirm these errors and the fixes below on
+Arch/EndeavourOS with KDE Plasma. Other distros may or may not be affected.
+If you have these errors on a different distro, or other errors altogether, please open an issue and let me know.
 
 If you see this error:
 
