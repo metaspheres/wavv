@@ -1,9 +1,9 @@
 # WAVV
 
-WAVV is a song metadata editor using Flask and PyWebView.
+WAVV is a song metadata editor using Flask and pywebview.
 
 ## Current functionalities
-Easily load file paths into the program, batch edit album and artist names and edit individual songs all in the same page in a clean and simple UI.
+Load file paths into the program, batch edit album and artist names and edit individual songs all in the same page in a clean and simple UI.
 
 ## How to test
 
@@ -69,7 +69,7 @@ Wayland-related rendering bugs in WebKitGTK. This has been confirmed on
 Arch/EndeavourOS with KDE Plasma; other distros may or may not be affected.
 If you hit these on a different distro, please open an issue and let me know.
 
-If you see:
+If you see this error:
 
     webview.errors.WebViewException: You must have either QT or GTK with
     Python extensions installed in order to use pywebview.
@@ -81,11 +81,11 @@ Install GTK bindings at the system level, then rebuild your venv to see them (on
     source venv/bin/activate
     pip install -r requirements.txt
 
-If you're on Wayland (check with `echo $XDG_SESSION_TYPE`), you may then hit this error:
+If you're on Wayland (you can check with the terminal command `echo $XDG_SESSION_TYPE`), you may then hit this error:
 
     Gdk-Message: Error 71 (Protocol error) dispatching to Wayland display.
 
-Check whether you have XWayland (`pacman -Qs xwayland`); install it if not:
+Check whether you have XWayland (check with the terminal commmand `pacman -Qs xwayland`). Install it if not:
 
     sudo pacman -S xorg-xwayland
 
@@ -93,7 +93,7 @@ Then run the app forcing the X11 backend:
 
     GDK_BACKEND=x11 python main.py
 
-If you then see:
+If you then see this error:
 
     Failed to create GBM buffer of size 800x600: Invalid argument
 
