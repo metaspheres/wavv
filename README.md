@@ -3,7 +3,7 @@
 WAVV is a song metadata editor using Flask and pywebview.
 
 ## Current functionalities
-Load file paths into the program, batch edit album and artist names and edit individual songs all in the same page in a clean and simple UI.
+Load file paths into the program, batch edit album and artist names and edit individual songs metadata all in the same page, with a simple UI.
 
 ## How to test
 
