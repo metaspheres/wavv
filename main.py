@@ -11,8 +11,6 @@ app.secret_key = os.environ.get('SECRET_KEY', os.urandom(24).hex())
 
 from views import *
 
-# ---- PyWebView ---- #
-
 def find_free_port():
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
         sock.bind(('', 0))  
@@ -47,4 +45,3 @@ if __name__ == "__main__":
 
     webview.start()
 
-# ---- PyWebView ---- #
