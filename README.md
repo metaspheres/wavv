@@ -60,7 +60,7 @@ If the above is not recognized on Mac/Linux:
 
      python3 main.py
 
-PyWebView will automatically find an available port and open WAVV in its own window.
+pywebwiew will automatically find an available port and open WAVV in its own window.
 
 ## Known issues on Linux (tested on Arch / EndeavourOS)
 
