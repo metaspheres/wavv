@@ -39,7 +39,7 @@ For PowerShell: If you get a "running scripts is disabled" error, run this once:
 
 **Mac and Linux:**
 
-	python -m venv venv`
+	python -m venv venv
 
 Note: some systems require `python3` instead of `python`, so if the above returns an error try:
 
